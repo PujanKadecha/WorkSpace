@@ -32,12 +32,14 @@ const deleteWorkspace = async ({ workspaceId, userId }) => {
   });
 
   if (!workspace) {
-    return res.status(404).json({ error: "Workspace not found" });
+    const error = new Error("Workspace not found");
+    error.status = 404;
+    throw error;
   }
   if (workspace.ownerId !== userId) {
-    return res
-      .status(403)
-      .json({ error: "Not authorized to delete this workspace" });
+    const error = new Error("Not authorized to delete this workspace");
+    error.status = 403;
+    throw error;
   }
 
   await prisma.document.deleteMany({ where: { workspaceId } });
