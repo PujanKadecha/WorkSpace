@@ -27,7 +27,7 @@ const io = new Server(server, {
     credentials: true,
   },
 });
-//--------------------------
+//------------------------------
 
 //-----------Redis----------
 const redisUrl = process.env.REDIS_URL;
@@ -45,7 +45,9 @@ app.use("/api", routes);
 //----------Server---------------------
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+//-------------------------------------
 
+//---------Redis Connection------------
 Promise.all([pubClient.connect(), subClient.connect()])
   .then(() => {
     io.adapter(createAdapter(pubClient, subClient));
