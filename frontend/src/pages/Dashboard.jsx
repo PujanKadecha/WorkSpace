@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_URL } from "../config";
-import JoinWorkspace from "../dashboard/joinworkspace";
-import WorkspaceCard from "../dashboard/workspaceCard";
+import { API_URL } from "../config/api";
+import JoinWorkspace from "../components/dashboard/JoinWorkspace";
+import WorkspaceCard from "../components/dashboard/WorkspaceCard";
 
 export default function Dashboard() {
   const [workspaces, setWorkspaces] = useState([]);

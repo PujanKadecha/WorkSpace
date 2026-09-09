@@ -3,9 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
-import { API_URL, SOCKET_URL } from "../config";
-import { MODULES, FORMATS } from "../config/editor.config.js";
-import EditorHeader from "../headers/editor.header.jsx";
+import { API_URL, SOCKET_URL } from "../config/api";
+import { MODULES, FORMATS } from "../config/editor";
+import EditorHeader from "../components/editor/EditorHeader";
 
 export default function Editor() {
   const { documentId } = useParams();
