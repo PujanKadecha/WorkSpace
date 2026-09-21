@@ -74,7 +74,7 @@ export default function EditorHeader({
               transition: "all 0.2s",
             }}
           >
-            {saving ? "Saving…" : saved ? "✓ Saved!" : "💾 Save"}
+            {saving ? "Saving…" : saved ? " Saved!" : " Save"}
           </button>
         )}
 
@@ -93,7 +93,7 @@ export default function EditorHeader({
               transition: "all 0.2s",
             }}
           >
-            {savingToDash ? "Saving…" : "📥 Save to My Dashboard"}
+            {savingToDash ? "Saving…" : " Save to My Dashboard"}
           </button>
         )}
 
@@ -110,7 +110,7 @@ export default function EditorHeader({
             transition: "all 0.2s",
           }}
         >
-          {copied ? "✓ Copied Link" : "🔗 Share"}
+          {copied ? "✓ Copied Link" : " Share"}
         </button>
 
         <button
@@ -127,7 +127,7 @@ export default function EditorHeader({
             transition: "all 0.2s",
           }}
         >
-          {deleting ? "Deleting…" : "🗑 Delete"}
+          {deleting ? "Deleting…" : " Delete"}
         </button>
 
         <div
