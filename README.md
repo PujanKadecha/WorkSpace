@@ -254,5 +254,6 @@ Redis makes this work even when users are connected to **different server instan
 
 MIT — feel free to use, modify, and distribute.
 
+---
 
 ![CI Pipeline](https://github.com/PujanKadecha/WorkSpace/actions/workflows/ci.yml/badge.svg)
