@@ -13,6 +13,19 @@ const getDocumentOwner = async (req, res) => {
   }
 };
 
+const getDocument = async (req, res) => {
+  const { documentId } = req.params;
+
+  try {
+    const document = await documentService.getDocument(documentId);
+    res.json(document);
+  } catch (err) {
+    res
+      .status(err.status || 500)
+      .json({ error: err.message || "Document not found" });
+  }
+};
+
 const createDocument = async (req, res) => {
   const { workspaceId } = req.params;
   const { title } = req.body;
@@ -87,6 +100,7 @@ const saveDocumentToDashboard = async (req, res) => {
 };
 
 module.exports = {
+  getDocument,
   getDocumentOwner,
   createDocument,
   deleteDocument,

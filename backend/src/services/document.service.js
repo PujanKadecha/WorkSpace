@@ -15,6 +15,20 @@ const getDocumentOwner = async (documentId) => {
   return { ownerId: document.workspace.ownerId };
 };
 
+const getDocument = async (documentId) => {
+  const document = await prisma.document.findUnique({
+    where: { id: documentId },
+  });
+
+  if (!document) {
+    const error = new Error("Document not found");
+    error.status = 404;
+    throw error;
+  }
+
+  return document;
+};
+
 const createDocument = async ({ workspaceId, title, userId }) => {
   const workspace = await prisma.workspace.findUnique({
     where: { id: workspaceId },
@@ -129,6 +143,7 @@ const saveDocumentToDashboard = async ({ documentId, workspaceId, userId }) => {
 };
 
 module.exports = {
+  getDocument,
   getDocumentOwner,
   createDocument,
   deleteDocument,

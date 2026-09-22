@@ -1,6 +1,7 @@
 const express = require("express");
 const { authenticationToken } = require("../middlewares/auth.middleware");
 const {
+  getDocument,
   deleteDocument,
   saveDocument,
   saveDocumentToDashboard,
@@ -9,6 +10,7 @@ const {
 
 const router = express.Router();
 
+router.get("/:documentId", authenticationToken, getDocument);
 router.delete("/:documentId", authenticationToken, deleteDocument);
 router.put("/:documentId/save", authenticationToken, saveDocument);
 router.post(

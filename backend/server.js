@@ -43,24 +43,26 @@ app.use("/api", routes);
 //-------------------------------------
 
 //----------Server---------------------
+if (require.main === module) {
+  server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  //---------Redis Connection------------
+  Promise.all([pubClient.connect(), subClient.connect()])
+    .then(() => {
+      io.adapter(createAdapter(pubClient, subClient));
+      console.log("Redis Adapter connected successfully");
+      setupSockets(io);
+    })
+    .catch((err) => {
+      console.error(
+        "Redis connection failed — real-time collab disabled:",
+        err.message,
+      );
+
+      setupSockets(io);
+    });
+  //-------------------------------------
+}
 //-------------------------------------
 
-//---------Redis Connection------------
-Promise.all([pubClient.connect(), subClient.connect()])
-  .then(() => {
-    io.adapter(createAdapter(pubClient, subClient));
-    console.log("Redis Adapter connected successfully");
-    setupSockets(io);
-  })
-  .catch((err) => {
-    console.error(
-      "Redis connection failed — real-time collab disabled:",
-      err.message,
-    );
-
-    setupSockets(io);
-  });
-
-//-------------------------------------
+module.exports = app;
