@@ -256,4 +256,19 @@ MIT — feel free to use, modify, and distribute.
 
 ---
 
+## Docker Setup & Deployment
+
+Both services are fully containerized and available on Docker Hub:
+- **Backend Image:** [`70madmax07/collaborative-workspace-backend:latest`](https://hub.docker.com/r/70madmax07/collaborative-workspace-backend)
+- **Frontend Image:** [`70madmax07/collaborative-workspace-frontend:latest`](https://hub.docker.com/r/70madmax07/collaborative-workspace-frontend)
+
+### Run with Docker Compose
+
+1. Make sure [Docker Desktop](https://www.docker.com/products/docker-desktop/) is running.
+2. Start the entire stack (PostgreSQL, Redis, Backend, Frontend):
+   ```bash
+   docker compose up -d
+
+---
+
 ![CI Pipeline](https://github.com/PujanKadecha/WorkSpace/actions/workflows/ci.yml/badge.svg)
