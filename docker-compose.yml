@@ -37,9 +37,7 @@ services:
 
   # 3. Express Backend
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: 70madmax07/collaborative-workspace-backend
     container_name: workspace_backend
     restart: always
     ports:
@@ -62,9 +60,7 @@ services:
 
   # 4. React Frontend (Nginx)
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image : 70madmax07/collaborative-workspace-frontend
     container_name: workspace_frontend
     restart: always
     ports:
